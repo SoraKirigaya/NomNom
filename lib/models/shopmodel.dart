@@ -9,15 +9,15 @@ class PromotionModel {
   final String picture;
 
   PromotionModel({
-    @required this.location,
-    @required this.name,
-    @required this.weight,
-    @required this.money,
-    @required this.picture,
+    required this.name,
+    required this.weight,
+    required this.money,
+    required this.picture,
+    required this.location,
   });
 
-  factory PromotionModel.fromFirestore(DocumentSnapshot doc) {
-    Map data = doc.data();
+  factory PromotionModel.fromFirestore(DocumentSnapshot? doc) {
+    Map data = doc!.data() as Map;
     return PromotionModel(
       location: data['location'] ?? '',
       name: data['name'] ?? '',

@@ -40,8 +40,8 @@ class ItemGridTile extends StatelessWidget {
   final UsersModel usersModel;
   final ItemsModel itemsModel;
   const ItemGridTile({
-    @required this.itemsModel,
-    @required this.usersModel,
+    required this.itemsModel,
+    required this.usersModel,
   });
   @override
   Widget build(BuildContext context) {

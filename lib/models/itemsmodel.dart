@@ -6,19 +6,19 @@ class ItemsModel {
   final double price;
   final int weight;
   final String picture;
-  final String id;
+  final String? id;
 
   ItemsModel({
-    @required this.name,
-    @required this.price,
-    @required this.weight,
-    @required this.picture,
+    required this.name,
+    required this.price,
+    required this.weight,
+    required this.picture,
     this.id,
   });
 
   factory ItemsModel.fromFirestore(DocumentSnapshot doc) {
-    Map data = doc.data();
-    
+    Map data = doc.data() as Map;
+
     return ItemsModel(
       id: doc.id,
       name: data['name'] ?? '',

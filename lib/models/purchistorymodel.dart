@@ -6,12 +6,12 @@ class PurcHistoryModel {
   final double price;
 
   PurcHistoryModel({
-    @required this.id,
-    @required this.price,
+    required this.id,
+    required this.price,
   });
 
   factory PurcHistoryModel.fromFirestore(DocumentSnapshot doc) {
-    Map data = doc.data();
+    Map data = doc.data() as Map;
     return PurcHistoryModel(
       id: data['id'] ?? '',
       price: data['price'] == null ? 0.0 : data['price'].toDouble(),

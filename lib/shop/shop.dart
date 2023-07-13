@@ -17,7 +17,7 @@ class Shop extends StatefulWidget {
 }
 
 class _ShopState extends State<Shop> with SingleTickerProviderStateMixin {
-  TabController tabController;
+  TabController? tabController;
   @override
   void initState() {
     super.initState();
@@ -26,7 +26,7 @@ class _ShopState extends State<Shop> with SingleTickerProviderStateMixin {
 
   @override
   void dispose() {
-    tabController.dispose();
+    tabController!.dispose();
     super.dispose();
   }
 
@@ -95,8 +95,8 @@ class _ShopState extends State<Shop> with SingleTickerProviderStateMixin {
                     ),
                   ),
                   Shimmer.fromColors(
-                    baseColor: Colors.deepOrange[300],
-                    highlightColor: Colors.teal[300],
+                    baseColor: Colors.deepOrange[300]!,
+                    highlightColor: Colors.teal[300]!,
                     child: Text(
                       'Promotion',
                       textAlign: TextAlign.center,
@@ -116,7 +116,7 @@ class _ShopState extends State<Shop> with SingleTickerProviderStateMixin {
                 indicatorSize: TabBarIndicatorSize.tab,
                 indicator: new BubbleTabIndicator(
                     indicatorHeight: 35,
-                    indicatorColor: Colors.grey[300],
+                    indicatorColor: Colors.grey[300]!,
                     tabBarIndicatorSize: TabBarIndicatorSize.tab),
                 labelColor: Colors.black,
                 unselectedLabelColor: Colors.grey[300],

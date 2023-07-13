@@ -3,11 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:velocity_x/velocity_x.dart';
 
 class RoundedButton extends StatelessWidget {
-  final String text;
-  final Function press;
-  final Color color, textColor;
+  final String? text;
+  final Function? press;
+  final Color? color, textColor;
   const RoundedButton({
-    Key key,
+    Key? key,
     this.text,
     this.press,
     this.color,
@@ -23,9 +23,9 @@ class RoundedButton extends StatelessWidget {
       child: ClipRRect(
         borderRadius: BorderRadius.circular(25),
         child: TextButton(
-          onPressed: press,
+          onPressed: press!(),
           child: Text(
-            text,
+            text!,
             style: TextStyle(color: Vx.white, fontSize: 20),
           ),
           style: TextButton.styleFrom(backgroundColor: kPrimaryColor),
