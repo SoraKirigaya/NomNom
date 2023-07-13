@@ -10,16 +10,16 @@ class CartsModel {
   final String id;
 
   CartsModel({
-    @required this.name,
-    @required this.price,
-    @required this.weight,
-    @required this.picture,
-    @required this.count,
-    @required this.id,
+    required this.name,
+    required this.price,
+    required this.weight,
+    required this.picture,
+    required this.count,
+    required this.id,
   });
 
-  factory CartsModel.fromFirestore(DocumentSnapshot doc) {
-    Map data = doc.data();
+  factory CartsModel.fromFirestore(DocumentSnapshot? doc) {
+    Map data = doc!.data() as Map;
     return CartsModel(
       name: data['name'] ?? '',
       price: data['price'] == null ? 0.0 : data['price'].toDouble(),

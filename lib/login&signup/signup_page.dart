@@ -19,8 +19,8 @@ class _SignUpState extends State<SignUp> {
   final FirebaseAuth _auth = FirebaseAuth.instance;
   @override
   Widget build(BuildContext context) {
-    String email;
-    String password;
+    String? email;
+    String? password;
     Size size = MediaQuery.of(context).size;
     return Scaffold(
       body: SafeArea(
@@ -68,7 +68,7 @@ class _SignUpState extends State<SignUp> {
                     ),
                   ),
                   onSaved: (value) {
-                    email = value;
+                    email = value!;
                   },
                   validator: (value) {
                     return null;
@@ -93,7 +93,7 @@ class _SignUpState extends State<SignUp> {
                     ),
                   ),
                   onSaved: (value) {
-                    password = value;
+                    password = value!;
                   },
                   validator: (value) {
                     return null;
@@ -106,13 +106,13 @@ class _SignUpState extends State<SignUp> {
                   text: 'SIGN UP',
                   press: () async {
                     bool registerUser = true;
-                    idKey.currentState.save();
-                    if (idKey.currentState.validate() == true) {
-                      UserCredential userCredential;
+                    idKey.currentState!.save();
+                    if (idKey.currentState!.validate() == true) {
+                      UserCredential? userCredential;
                       try {
                         userCredential =
                             await _auth.createUserWithEmailAndPassword(
-                                email: email.trim(), password: password);
+                                email: email!.trim(), password: password!);
                       } catch (signUpError) {
                         registerUser = false;
                         context.showToast(
@@ -120,14 +120,14 @@ class _SignUpState extends State<SignUp> {
                             bgColor: Colors.red,
                             position: VxToastPosition.top);
                       }
-                      final User user = userCredential.user;
+                      final User user = userCredential!.user!;
                       if (registerUser == true) {
                         final userPath = 'users/${user.uid}';
                         final userReference =
                             FirebaseFirestore.instance.doc(userPath);
                         await userReference.set({
                           'password': password,
-                          'email': email.trim(),
+                          'email': email!.trim(),
                         });
                         context.showToast(
                             msg: 'Account registered successfully',

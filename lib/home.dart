@@ -15,10 +15,10 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
   int pageNumber = 0;
   final FirebaseAuth auth = FirebaseAuth.instance;
-  String uid;
+  String? uid;
 
   bool isloggedin() {
-    User user = auth.currentUser;
+    User user = auth.currentUser!;
     if (user != null) {
       uid = user.uid;
       setState(() {});
@@ -36,9 +36,9 @@ class _HomeState extends State<Home> {
 
     return (uid != null)
         ? Scaffold(
-            body: StreamProvider<UsersModel>.value(
+            body: StreamProvider<UsersModel?>.value(
                 initialData: null,
-                value: FirebaseDatabase().getCurrentUser(uid),
+                value: FirebaseDatabase().getCurrentUser(uid!),
                 builder: (context, child) => body(pageNumber, goToHome)),
             bottomNavigationBar: BottomNavigationBar(
               currentIndex: pageNumber,

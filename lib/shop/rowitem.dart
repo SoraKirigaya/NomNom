@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 
 class RowItem extends StatelessWidget {
   final String name;
-  final Color color;
+  final Color? color;
   const RowItem({
-    @required this.name,
+    required this.name,
     this.color,
   });
   @override

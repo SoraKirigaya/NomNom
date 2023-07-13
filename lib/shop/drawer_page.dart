@@ -14,9 +14,9 @@ Future drawer(
     // isScrollControlled: true,
     context: context,
     builder: (context) {
-      return StreamProvider<List<CartsModel>>.value(
+      return StreamProvider<List<CartsModel>?>.value(
         initialData: null,
-        value: FirebaseDatabase().getCartsDetails(usersModel.userID),
+        value: FirebaseDatabase().getCartsDetails(usersModel.userID!),
         builder: (context, child) => DrawerBody(
           itemsModel: itemsModel,
           usersModel: usersModel,
@@ -29,7 +29,7 @@ Future drawer(
 class DrawerBody extends StatefulWidget {
   final UsersModel usersModel;
   final ItemsModel itemsModel;
-  DrawerBody({Key key, @required this.usersModel, @required this.itemsModel})
+  DrawerBody({Key? key, required this.usersModel, required this.itemsModel})
       : super(key: key);
 
   @override
@@ -197,7 +197,7 @@ class _DrawerBodyState extends State<DrawerBody> {
               child: cartList != null
                   ? TextButton(
                       onPressed: () async {
-                        await sentoCart(widget.usersModel.userID,
+                        await sentoCart(widget.usersModel.userID!,
                             widget.itemsModel, cartList);
                         Navigator.pop(context);
                       },

@@ -9,12 +9,12 @@ class Gridtile extends StatelessWidget {
   final Function onTap;
   final String picture;
   Gridtile(
-      {@required this.location,
-      @required this.name,
-      @required this.weight,
-      @required this.money,
-      @required this.onTap,
-      @required this.picture});
+      {required this.location,
+      required this.name,
+      required this.weight,
+      required this.money,
+      required this.onTap,
+      required this.picture});
   @override
   Widget build(BuildContext context) {
     return Padding(

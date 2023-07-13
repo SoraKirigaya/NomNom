@@ -32,9 +32,9 @@ class _CartState extends State<Cart> {
               backgroundColor: Colors.white,
               elevation: 0,
             ),
-            body: StreamProvider<List<CartsModel>>.value(
+            body: StreamProvider<List<CartsModel>?>.value(
               initialData: null,
-              value: FirebaseDatabase().getCartsDetails(user.userID),
+              value: FirebaseDatabase().getCartsDetails(user.userID!),
               builder: (context, child) => CartBody(
                 user: user,
               ),
@@ -46,7 +46,7 @@ class _CartState extends State<Cart> {
 
 class CartBody extends StatefulWidget {
   final UsersModel user;
-  const CartBody({@required this.user});
+  const CartBody({required this.user});
   @override
   _CartBodyState createState() => _CartBodyState();
 }
@@ -267,7 +267,7 @@ class _CartBodyState extends State<CartBody> {
           : Center(child: CircularProgressIndicator()),
       bottomNavigationBar: TextButton(
         onPressed: () {
-          senttoPurcHistory(widget.user.userID, cartList);
+          senttoPurcHistory(widget.user.userID!, cartList);
         },
         child: Padding(
           padding: const EdgeInsets.all(8.0),

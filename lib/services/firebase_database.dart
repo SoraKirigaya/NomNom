@@ -53,7 +53,7 @@ class FirebaseDatabase {
     try {
       final ref = db.doc('users/$usersID').snapshots();
       return ref.map((snapshot) => UsersModel.fromMap(
-            snapshot.data(),
+            snapshot.data() as Map,
             usersID,
           ));
     } catch (e) {

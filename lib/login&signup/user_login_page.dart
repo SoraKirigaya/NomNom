@@ -14,9 +14,9 @@ class UserLoginPage extends StatefulWidget {
 class _LoginPageState extends State<UserLoginPage> {
   final GlobalKey<FormState> idKey = GlobalKey<FormState>();
   final FirebaseAuth _auth = FirebaseAuth.instance;
-  String uid;
+  String? uid;
   bool isloggedin() {
-    User user = _auth.currentUser;
+    User user = _auth.currentUser!;
     if (user != null) {
       uid = user.uid;
       return true;
@@ -30,8 +30,8 @@ class _LoginPageState extends State<UserLoginPage> {
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
 
-    String email;
-    String password;
+    String? email;
+    String? password;
     isloggedin();
     return (uid == null)
         ? Scaffold(
@@ -89,7 +89,7 @@ class _LoginPageState extends State<UserLoginPage> {
                         ),
                       ),
                       onSaved: (value) {
-                        email = value;
+                        email = value!;
                       },
                       validator: (value) {
                         return null;
@@ -114,7 +114,7 @@ class _LoginPageState extends State<UserLoginPage> {
                         ),
                       ),
                       onSaved: (value) {
-                        password = value;
+                        password = value!;
                       },
                       validator: (value) {
                         return null;
@@ -126,14 +126,14 @@ class _LoginPageState extends State<UserLoginPage> {
                     RoundedButton(
                       text: 'LOGIN',
                       press: () async {
-                        idKey.currentState.save();
-                        if (idKey.currentState.validate() == true) {
+                        idKey.currentState!.save();
+                        if (idKey.currentState!.validate() == true) {
                           UserCredential userCredential;
                           try {
                             userCredential =
                                 await _auth.signInWithEmailAndPassword(
-                              email: email.trim(),
-                              password: password,
+                              email: email!.trim(),
+                              password: password!,
                             );
                             print(userCredential);
                             context.showToast(

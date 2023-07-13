@@ -5,9 +5,9 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 class PurchaseHistory extends StatefulWidget {
-  final UsersModel user;
+  final UsersModel? user;
 
-  const PurchaseHistory({Key key, this.user}) : super(key: key);
+  const PurchaseHistory({Key? key, this.user}) : super(key: key);
 
   @override
   Body createState() => Body();
@@ -37,9 +37,9 @@ class Body extends State<PurchaseHistory> {
         backgroundColor: Colors.white,
         elevation: 0,
       ),
-      body: StreamProvider<List<PurcHistoryModel>>.value(
+      body: StreamProvider<List<PurcHistoryModel>?>.value(
         initialData: null,
-        value: FirebaseDatabase().getPurchHistoryDetails(widget.user.userID),
+        value: FirebaseDatabase().getPurchHistoryDetails(widget.user!.userID!),
         builder: (context, child) => PurchaseHistoryBody(),
       ),
     );
